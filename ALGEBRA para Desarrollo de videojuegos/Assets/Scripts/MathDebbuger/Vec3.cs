@@ -12,7 +12,7 @@ namespace CustomMath
         public float z;
 
         public float sqrMagnitude { get { return x * x + y * y + z * z; } }
-        public Vector3 normalized { get { return Normalize(this); } }
+      //  public Vector3 normalized { get { return Normalize(this); } }
         public float magnitude { get { return Magnitude(this); } }
         #endregion
 
@@ -137,16 +137,28 @@ namespace CustomMath
         }
         public static float Angle(Vec3 from, Vec3 to)
         {
+            float num = Mathf.Sqrt(from.sqrMagnitude * to.sqrMagnitude);
 
-            throw new NotImplementedException();
+            if (num < epsilon)
+            {
+                return 0f;
+            }
+
+            float num2 = Dot(from,to) / num;
+
+            return Mathf.Acos(num2);
+
+            //throw new NotImplementedException();
         }
         public static Vec3 ClampMagnitude(Vec3 vector, float maxLength)
         {
+
             throw new NotImplementedException();
         }
         public static float Magnitude(Vec3 vector)
         {
-            throw new NotImplementedException();
+            return Mathf.Sqrt(vector.x*vector.x+vector.y*vector.y+vector.z*vector.z);
+           // throw new NotImplementedException();
         }
         public static Vec3 Cross(Vec3 a, Vec3 b)
         {
@@ -158,7 +170,9 @@ namespace CustomMath
         }
         public static float Dot(Vec3 a, Vec3 b)
         {
-            throw new NotImplementedException();
+            return a.x * b.x + a.y * b.y + a.z * b.z;
+
+            //throw new NotImplementedException();
         }
         public static Vec3 Lerp(Vec3 a, Vec3 b, float t)
         {
