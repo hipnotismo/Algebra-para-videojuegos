@@ -12,7 +12,7 @@ namespace CustomMath
         public float z;
 
         public float sqrMagnitude { get { return x * x + y * y + z * z; } }
-       // public Vector3 normalized { get { return Normalize(this); } }
+        public Vector3 normalized { get { return Normalize(this); } }
         public float magnitude { get { return Magnitude(this); } }
         #endregion
 
@@ -173,7 +173,7 @@ namespace CustomMath
         }
         public static Vec3 Cross(Vec3 a, Vec3 b)
         {
-            return new Vec3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.x, a.x * b.y - a.y * b.x);
+            return new Vec3((a.y * b.z) - (a.z * b.y), (a.z * b.x) - (a.x * b.z), (a.x * b.y) - (a.y * b.x));
             //throw new NotImplementedException();
         }
         public static float Distance(Vec3 a, Vec3 b)
@@ -182,7 +182,7 @@ namespace CustomMath
             float num2 = a.y - b.y;
             float num3 = a.z - b.z;
 
-            return (float)Math.Sqrt(num * num + num2 * num2 + num3 * num3);
+            return Mathf.Sqrt(num * num + num2 * num2 + num3 * num3);
 
             // throw new NotImplementedException();
         }
@@ -252,11 +252,22 @@ namespace CustomMath
             z *= scale.z;
             //throw new NotImplementedException();
         }
+
+        public static Vector3 Normalize(Vec3 vec3)
+        {
+            float num = Magnitude(vec3);
+            if (num > epsilon)
+            {
+                return vec3 / num;
+            }
+
+            return Zero;
+        }
+
         public void Normalize()
         {
             float num = Magnitude(this);
-
-            if(num > epsilon)
+            if (num > epsilon)
             {
                 this /= num;
             }
@@ -264,8 +275,6 @@ namespace CustomMath
             {
                 this = Zero;
             }
-
-            //throw new NotImplementedException();
         }
         #endregion
 
