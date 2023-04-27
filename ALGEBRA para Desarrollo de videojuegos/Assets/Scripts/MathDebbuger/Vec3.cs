@@ -253,7 +253,7 @@ namespace CustomMath
             //throw new NotImplementedException();
         }
 
-        public static Vector3 Normalize(Vec3 vec3)
+        public static Vec3 Normalize(Vec3 vec3)
         {
             float num = Magnitude(vec3);
             if (num > epsilon)
