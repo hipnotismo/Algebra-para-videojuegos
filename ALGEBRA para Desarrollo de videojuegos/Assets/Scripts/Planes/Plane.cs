@@ -27,10 +27,40 @@ namespace CustomMath
             get { return _distance; }
             set { _distance = value; }
         }
+
+        /// <summary>
+        /// Crea un plano.
+        /// </summary>
+        /// <param name="inNormal"></param>
+        /// <param name="inPoint"></param>
         public Plane(Vec3 inNormal, Vec3 inPoint)
         {
             _normal = Vec3.Normalize(inNormal);
             _distance = -Vec3.Dot(inNormal, inPoint);
         }
+
+        /// <summary>
+        /// Crea un plano.
+        /// </summary>
+        /// <param name="inNormal"></param>
+        /// <param name="distance"></param>
+        public Plane(Vec3 inNormal, float distance)
+        {
+            _normal = Vec3.Normalize(inNormal);
+            _distance = distance;
+        }
+
+        /// <summary>
+        /// Crea un plano.
+        /// </summary>
+        /// <param name="vecA"></param>
+        /// <param name="vecB"></param>
+        /// <param name="vecC"></param>
+        public Plane(Vec3 vecA, Vec3 vecB, Vec3 vecC)
+        {
+            _normal = Vec3.Normalize(Vec3.Cross(vecB - vecA, vecC - vecA));
+            _distance = -Vec3.Dot(_normal, vecA);
+        }
+
     }
 }
