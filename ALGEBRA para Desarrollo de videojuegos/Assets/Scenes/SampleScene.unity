@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &74678008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c9eb1f85e5c7214a89d545f12536700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exerciseIndex: 9
+  exerciseIndex: 5
   vectorA: {x: 2, y: 3, z: 0}
   vectorB: {x: 2, y: 2, z: 0}
 --- !u!4 &74678009
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 642327099, guid: 81a17a81fa41e3d4482ff58da1536cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ejercicio: 9
+  ejercicio: 4
   vectorColor: {r: 1, g: 0, b: 0, a: 1}
   a: {x: 2, y: 3, z: 0}
   b: {x: 2, y: 2, z: 0}

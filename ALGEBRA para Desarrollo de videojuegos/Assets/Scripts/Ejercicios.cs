@@ -12,7 +12,10 @@ public class Ejercicios : MonoBehaviour
     Vec3 vecA = Vec3.Zero;
     Vec3 vecB = Vec3.Zero;
     Vec3 vecC = Vec3.Zero;
-     
+
+    private float time = 0;
+    private const int timeLimit = 10;
+
     void Start()
     {
         MathDebbuger.Vector3Debugger.AddVector(transform.position, transform.position + vecA, Color.red, "VectorA");
@@ -48,8 +51,9 @@ public class Ejercicios : MonoBehaviour
                 vecC = -Vec3.Cross(vecA, vecB); // Producto cruz invertido
                 break;
             case 5:
-                vecC = Vec3.Lerp(vecA, vecB, Time.time % 1);
-                break;
+                time = time > 1 ? 0 : time + Time.deltaTime;
+
+                vecC = Vec3.Lerp(vecA, vecB, time); break;
             case 6:
                 vecC = Vec3.Max(vecA, vecB);
                 break;
@@ -63,6 +67,9 @@ public class Ejercicios : MonoBehaviour
                 vecC = Vec3.Reflect(vecA, new Vec3(vecB.normalized));
                 break; 
             case 10:
+                time = time > timeLimit ? 0 : time + Time.deltaTime;
+
+                vecC = Vec3.LerpUnclamped(vecA, vecB, time);
                 break;
         }
 
